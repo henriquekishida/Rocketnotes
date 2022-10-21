@@ -1,32 +1,32 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export const Container = styled.div `
+export const Container = styled.div`
+width: 100%;
+display: flex;
+align-items: center;
+background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+color: ${({ theme }) => theme.COLORS.GRAY_300};
+
+margin-bottom: 8px;
+border-radius: 1rem;
+
+> input {
+  height: 5.6rem;
   width: 100%;
-  display: flex;
-  align-items: center;
 
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
-  color: ${({ theme }) => theme.COLORS.GRAY_300};
+  padding: 1.2rem;
 
-  margin-bottom: 8px;
-  border-radius: 1rem;
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  background: transparent;
+  border: 0;
 
-  > input {
-    width: 100%;
-    height: 5.6rem;
-
-    padding: 1.2rem;
-
-    color: ${({ theme }) => theme.COLORS.WHITE};
-    background: transparent;
-    border: 0;
-
-    &:placeholder {
-      color: ${({ theme }) => theme.COLORS.GRAY_300};
-    }
+  &:placeholder {
+    color: ${({ theme }) => theme.COLORS.GRAY_300};
   }
 
-  > svg {
-    margin-left: 1.6rem;
-  }
+}
+
+> svg {
+  margin: 0 1.6rem;
+}
 `

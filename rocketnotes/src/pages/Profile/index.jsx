@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi"
-import { Link } from "react-router-dom";
-import { Container, Form, Avatar } from "./styles";
-import { api } from "../../services/api";
+import { useState } from 'react'
+import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
-import { useAuth } from "../../hooks/auth";
+import { useAuth } from "../../hooks/auth"
 
+import { api } from '../../services/api'
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
+import { Input } from '../../components/Input'
+import { Button } from '../../components/Button'
 
-import { Input } from "../../components/Input"
-import { Button } from "../../components/Button"
+import { Container, Form, Avatar } from './style';
 
 export function Profile() {
   const { user, updateProfile } = useAuth()
@@ -18,7 +18,7 @@ export function Profile() {
   const [email, setEmail] = useState(user.email)
   const [oldPassword, setOldPassword] = useState()
   const [newPassword, setNewPassword] = useState()
-  
+
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
   const [avatar, setAvatar] = useState(avatarUrl)
   const [avatarFile, setAvatarFile] = useState(null)
@@ -28,7 +28,7 @@ export function Profile() {
       name,
       email,
       password: newPassword,
-      old_password: oldPassword,
+      old_password: oldPassword
     }
     await updateProfile({ user, avatarFile })
   }
@@ -53,37 +53,39 @@ export function Profile() {
         <Avatar>
           <img
             src={avatar}
-            alt="User profile picture"
+            alt="user profile picture"
           />
 
           <label htmlFor="avatar">
             <FiCamera />
 
             <input
-              type="file"
               id="avatar"
+              type="file"
               onChange={handleChangeAvatar}
             />
           </label>
+
         </Avatar>
+
         <Input
           placeholder="Name"
-          text="text"
+          type="text"
           icon={FiUser}
           value={name}
           onChange={e => setName(e.target.value)}
         />
 
         <Input
-          placeholder="Email"
-          text="text"
+          placeholder="E-mail"
+          type="text"
           icon={FiMail}
-          alue={email}
+          value={email}
           onChange={e => setEmail(e.target.value)}
         />
 
         <Input
-          placeholder="Old Password"
+          placeholder="Current Password"
           type="password"
           icon={FiLock}
           onChange={e => setOldPassword(e.target.value)}
@@ -97,10 +99,7 @@ export function Profile() {
         />
 
         <Button title="Save" onClick={handleUpdate} />
-
-
       </Form>
-
     </Container>
   )
 }

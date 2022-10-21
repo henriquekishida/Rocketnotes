@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
@@ -12,10 +13,11 @@ export const Container = styled.div`
   "brand header"
   "menu search"
   "menu content"
-  "newnote content";
+  "newnotes content";
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 `
+
 export const Brand = styled.div`
   grid-area: brand;
 
@@ -24,9 +26,9 @@ export const Brand = styled.div`
   align-items: center;
 
   border-bottom-width: 1px;
-  border-bottom-style: solid;
+  border-bottom-style: solid; 
   border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
-
+  
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
   > h1 {
@@ -34,6 +36,7 @@ export const Brand = styled.div`
     color: ${({ theme }) => theme.COLORS.ORANGE};
   }
 `
+
 export const Menu = styled.ul`
   grid-area: menu;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
@@ -43,23 +46,28 @@ export const Menu = styled.ul`
 
   > li {
     margin-bottom: 2.4rem;
-    list-style: none;
+    text-decoration: none;
+    list-style-type: none;
   }
 `
+
 export const Search = styled.div`
   grid-area: search;
-  padding:  6.4rem 6.4rem 0;
+  padding: 6.4rem 6.4rem 0;
 `
+
 export const Content = styled.div`
   grid-area: content;
-  padding:  0 6.4rem;
+  padding: 0 6.4rem;
   overflow-y: auto;
 `
-export const NewNote = styled(Link)`
-  grid-area: newnote;
+
+export const NewNotes = styled(Link)`
+  grid-area: newnotes;
 
   background-color: ${({ theme }) => theme.COLORS.ORANGE};
   color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+  border: none;
 
   display: flex;
   align-items: center;

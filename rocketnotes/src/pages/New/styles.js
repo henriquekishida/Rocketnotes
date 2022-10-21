@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
@@ -10,15 +10,15 @@ export const Container = styled.div`
   "header"
   "content";
 
-  > main {
-    grid-area: content;
-    overflow-y: auto;
-  }
+> main {
+  grid-area: content;
+  overflow-y: auto;
+}
 
   .tags {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 `
 

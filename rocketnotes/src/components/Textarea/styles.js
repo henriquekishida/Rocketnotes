@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.textarea`
   width: 100%;
@@ -11,11 +11,10 @@ export const Container = styled.textarea`
   resize: none;
 
   margin-bottom: 8px;
-
   border-radius: 1rem;
   padding: 1.6rem;
 
-  &::placeholder {
-    color: ${({ theme }) => theme.COLORS.GRAY_300};
-  }
+&::placeholder {
+  color: ${({ theme }) => theme.COLORS.GRAY_300};
+}
 `

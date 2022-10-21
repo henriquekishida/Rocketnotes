@@ -12,7 +12,7 @@ class usersController{
     const checkUserExists = await database.get("SELECT * FROM users WHERE email = (?)", [email])
 
     if (checkUserExists){
-      throw new appError("this email is already in use.")
+      throw new appError("This email is already in use.")
     }
 
     const hashedPassword = await hash(password, 8)
@@ -25,7 +25,7 @@ class usersController{
     return response.status(201).json()
   }
   async update(request, response){
-    const{ name, email, password, currentPassword } = request.body
+    const{ name, email, password, old_password } = request.body
     const user_id = request.user.id
 
     const database = await sqliteConnection()
@@ -37,21 +37,21 @@ class usersController{
 
     const userWithUpdatedEmail = await database.get("SELECT * FROM users WHERE email = (?)", [email])
 
-    if(userWithUpdatedEmail && userWithUpdatedEmail.id !==  user.id){
+    if(userWithUpdatedEmail && userWithUpdatedEmail.id !==user.id){
       throw new appError ("This email is already in use.")
     }
 
     user.name = name ?? user.name
     user.email = email ?? user.email
 
-    if(password && !currentPassword){
+    if(password && !old_password){
       throw new appError("You need to inform your current password.")
     }
 
-    if (password && currentPassword){
-      const checkCurrentPassword = await compare(currentPassword, user.password)
+    if (password && old_password){
+      const checkOldPassword = await compare(old_password, user.password)
 
-      if(!checkCurrentPassword){
+      if(!checkOldPassword){
         throw new appError ("Current password is incorrect.")
       }
 

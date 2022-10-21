@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import { Background, Container, Form } from './styles'
+import { Link, useNavigate } from 'react-router-dom'
 
-import { FiMail, FiLock, FiUser, FiAlertOctagon } from "react-icons/fi";
-import { Input } from "../../components/Input";
-import { Button } from "../../components/Button";
+import { api } from '../../services/api'
 
-import { Container, Form, Background } from "./styles";
 
-import { api } from "../../services/api";
+import { Input } from '../../components/Input'
+import { FiUser, FiMail, FiLock } from 'react-icons/fi'
+import { Button } from '../../components/Button'
 
 export function SignUp() {
   const [name, setName] = useState("")
@@ -18,19 +18,19 @@ export function SignUp() {
 
   function handleSignUp() {
     if (!name || !email || !password) {
-      alert("Fill all the fields")
+      return alert("Fill every field")
     }
 
     api.post("/users", { name, email, password })
       .then(() => {
-        alert("User created successfully")
+        alert("You have successfully registered")
         navigate("/")
       })
       .catch(error => {
         if (error.response) {
-          FiAlertOctagon(error.response.data.message)
+          alert(error.response.data.message)
         } else {
-          alert("Unable to create account")
+          alert("Unable to register")
         }
       })
   }
@@ -41,9 +41,9 @@ export function SignUp() {
 
       <Form>
         <h1>Rocket Notes</h1>
-        <p>Application to save and manage your useful links</p>
+        <p>Application to save and manage useful links.</p>
 
-        <h2>Create Account</h2>
+        <h2>Create account</h2>
 
         <Input
           placeholder="Name"
@@ -66,13 +66,11 @@ export function SignUp() {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <Button title="Create" onClick={handleSignUp} />
+        <Button title="Register account" onClick={handleSignUp} />
 
-        <Link to="/">
-          Log in instead
-        </Link>
+        <Link to="/"> Log in instead</Link>
+
       </Form>
-
     </Container>
   )
 }

@@ -31,7 +31,7 @@ class notesController{
 
     await knex ("tags").insert(tagsInsert)
   
-    response.json()
+    return response.json()
   }
 
   async show(request, response) {
@@ -58,7 +58,7 @@ class notesController{
 
   async index(request, response) {
     const { title, tags } = request.query
-
+    
     const user_id = request.user.id
 
     let notes

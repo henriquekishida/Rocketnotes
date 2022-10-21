@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export const Container = styled.div `
+export const Container = styled.div`
   width: 100%;
   height: 100vh;
-    
+  
   display: grid;
   grid-template-rows: 10.5rem auto;
   grid-template-areas: 
@@ -18,13 +18,13 @@ export const Container = styled.div `
 `
 
 export const Links = styled.ul`
-  list-style: none;
+  list-style-type: none;
 
   > li {
     margin-top: 1.2rem;
 
     a {
-      color:${({ theme }) => theme.COLORS.WHITE};
+      color: ${({ theme }) => theme.COLORS.WHITE};
     }
   }
 `
@@ -43,9 +43,9 @@ export const Content = styled.div`
   > h1 {
     font-size: 3.6rem;
     font-weight: 500;
-    padding-top: 6.4rem;
+    padding-top: 5rem;
   }
-  
+
   > p {
     font-size: 1.6rem;
     margin-top: 1.6rem;

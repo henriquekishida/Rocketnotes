@@ -4,9 +4,7 @@ const appError = require("./utils/appError")
 const uploadConfig = require("./configs/upload")
 
 const cors = require("cors")
-
 const express = require("express")
-
 const routes = require("./routes")
 
 const app = express()
@@ -19,8 +17,8 @@ app.use(routes)
 
 migrationRun()
 
-app.use((error, request, response, next) => {
-  if (error instanceof appError) {
+app.use((error, request, response, next) =>{
+  if(error instanceof appError){
     return response.status(error.statusCode).json({
       status: "error",
       message: error.message

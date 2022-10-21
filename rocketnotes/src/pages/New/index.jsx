@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import { Header } from "../../components/Header"
-import { Input } from "../../components/Input"
-import { Textarea } from "../../components/Textarea"
-import { NoteItem } from "../../components/NoteItem"
-import { Section } from "../../components/Section"
-import { Button } from "../../components/Button"
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { Header } from '../../components/Header'
+import { Input } from '../../components/Input'
+import { TextArea } from '../../components/TextArea'
+import { NoteItem } from '../../components/NoteItem'
+import { Section } from '../../components/Section'
+import { Button } from '../../components/Button'
 
-import { useState } from "react";
+import { Container, Form } from './styles'
 
-import { Container, Form } from "./styles"
+import { api } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 export function New() {
   const [title, setTitle] = useState("")
@@ -24,7 +24,6 @@ export function New() {
   const [newTag, setNewTag] = useState("")
 
   const navigate = useNavigate()
-
 
   function handleAddLink() {
     setLinks(prevState => [...prevState, newLink])
@@ -40,7 +39,7 @@ export function New() {
     setNewTag("")
   }
 
-  function handleRemoveTag() {
+  function handleRemoveTag(deleted) {
     setTags(prevState => prevState.filter(tag => tag !== deleted))
   }
 
@@ -51,7 +50,7 @@ export function New() {
       tags,
       links
     })
-    alert("Note created successfully")
+    alert("Successfully created note")
     navigate("/")
   }
 
@@ -63,15 +62,14 @@ export function New() {
         <Form>
           <header>
             <h1>Create note</h1>
-            <Link to="/">Back</Link>
+            <Link to="/">back</Link>
           </header>
 
           <Input
             placeholder="Title"
             onChange={e => setTitle(e.target.value)}
           />
-
-          <Textarea
+          <TextArea
             placeholder="Note"
             onChange={e => setDescription(e.target.value)}
           />
@@ -80,7 +78,7 @@ export function New() {
             {
               links.map((link, index) => (
                 <NoteItem
-                  key={index}
+                  key={String(index)}
                   value={link}
                   onClick={() => handleRemoveLink(link)}
                 />
@@ -88,7 +86,7 @@ export function New() {
             }
             <NoteItem
               isNew
-              placeholder="New Link"
+              placeholder="New link"
               value={newLink}
               onChange={e => setNewLink(e.target.value)}
               onClick={handleAddLink}
@@ -96,7 +94,7 @@ export function New() {
           </Section>
 
           <Section title="Tags">
-            <div className="tags  ">
+            <div className="tags">
               {
                 tags.map((tag, index) => (
                   <NoteItem
@@ -106,7 +104,6 @@ export function New() {
                   />
                 ))
               }
-
               <NoteItem
                 isNew
                 placeholder="New tag"
@@ -121,6 +118,7 @@ export function New() {
             title="Save"
             onClick={handleNewNote}
           />
+
         </Form>
       </main>
     </Container>
