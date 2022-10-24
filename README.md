@@ -1,4 +1,4 @@
-<h1 align="center"> Rocketnotes</h1>
+<h1 align="center">📄  Rocketnotes</h1>
 
 <p>Code along of API for users to create and manage notes.</p>
 
@@ -11,9 +11,9 @@
   and the integration of front to back-end.
 </p>
 
-br>
+<br>
 
-<h2 align="center"> Before running</h2>
+<h2 align="center"> Before running it ❗️</h2>
 
 <p align="justify">
   Make sure to open your terminal on "rocketnotes" folder and execute `npm install`. 
@@ -25,7 +25,7 @@ There's a test user in the database already.
 - Login: **a@email.com**
 - Password: **a**
 
-br>
+<br>
 
 <h3 align="center">Preview </h3>
 
