@@ -11,3 +11,5 @@ There's a test user in the database already.
 - Login: **a@email.com**
 - Password: **a**
 
+## Preview
+![rocketnotes gif](https://user-images.githubusercontent.com/108272161/197550034-d932e3b1-2f14-4d3c-8929-28481d5f0ee3.gif)
