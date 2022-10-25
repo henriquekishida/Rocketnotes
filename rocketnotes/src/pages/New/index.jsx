@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
@@ -7,6 +6,7 @@ import { TextArea } from '../../components/TextArea'
 import { NoteItem } from '../../components/NoteItem'
 import { Section } from '../../components/Section'
 import { Button } from '../../components/Button'
+import { ButtonText } from '../../components/ButtonText'
 
 import { Container, Form } from './styles'
 
@@ -25,6 +25,10 @@ export function New() {
   const [newTag, setNewTag] = useState("")
 
   const navigate = useNavigate()
+
+  function handleBack() {
+    navigate(-1)
+  }
 
   function handleAddLink() {
     setLinks(prevState => [...prevState, newLink])
@@ -45,15 +49,15 @@ export function New() {
   }
 
   async function handleNewNote() {
-    if(!title) {
+    if (!title) {
       return alert("Title is needed.")
     }
-    
-    if(newLink) {
+
+    if (newLink) {
       return alert("A link typed but not added.")
     }
 
-    if(newTag) {
+    if (newTag) {
       return alert("A tag typed but not added.")
     }
 
@@ -64,7 +68,7 @@ export function New() {
       links
     })
     alert("Successfully created note")
-    navigate("/")
+    navigate(-1)
   }
 
   return (
@@ -75,7 +79,10 @@ export function New() {
         <Form>
           <header>
             <h1>Create note</h1>
-            <Link to="/">back</Link>
+            <ButtonText
+              title="Back"
+              onClick={handleBack}
+            />
           </header>
 
           <Input
