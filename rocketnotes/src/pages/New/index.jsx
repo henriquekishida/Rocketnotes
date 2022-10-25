@@ -14,6 +14,7 @@ import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
 
 export function New() {
+
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
 
@@ -44,6 +45,18 @@ export function New() {
   }
 
   async function handleNewNote() {
+    if(!title) {
+      return alert("Title is needed.")
+    }
+    
+    if(newLink) {
+      return alert("A link typed but not added.")
+    }
+
+    if(newTag) {
+      return alert("A tag typed but not added.")
+    }
+
     await api.post("/notes", {
       title,
       description,
