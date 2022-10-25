@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { FiPlus, FiSearch } from 'react-icons/fi'
 
@@ -15,8 +16,16 @@ import { api } from '../../services/api'
 export function Home() {
   const [tags, setTags] = useState([])
   const [selectedTags, setSelectedTags] = useState([])
+  const [search, setSearch] = useState([])
+  const [notes, setNotes] = useState([])
+
+  const navigate = useNavigate()
 
   function handleSelectedTag(tagName) {
+    if (tagName === "all") {
+      return setSelectedTags([])
+    }
+
     const alreadySelected = selectedTags.includes(tagName)
 
     if (alreadySelected) {
@@ -27,6 +36,10 @@ export function Home() {
     }
   }
 
+  function handleDetails(id) {
+    navigate(`/details/${id}`)
+  }
+
   useEffect(() => {
     async function fetchTags() {
       const response = await api.get("/tags")
@@ -35,6 +48,14 @@ export function Home() {
 
     fetchTags()
   }, [])
+
+  useEffect(() => {
+    async function fetchNotes() {
+      const response = await api.get(`/notes?title=${search}&tags=${selectedTags}`)
+      setNotes(response.data)
+    }
+    fetchNotes()
+  }, [selectedTags, search])
 
   return (
     <Container>
@@ -66,19 +87,24 @@ export function Home() {
       </Menu>
 
       <Search>
-        <Input placeholder="Search by title" icon={FiSearch} />
+        <Input
+          placeholder="Search by title"
+          icon={FiSearch}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </Search>
 
       <Content>
         <Section title="My notes">
-          <Note data={{
-            title: 'React',
-            tags: [
-              { id: '1', name: 'react' },
-              { id: '2', name: 'rocketseat' }
-            ]
-          }}
-          />
+          {
+            notes.map(note => (
+              <Note
+                key={String(note.id)}
+                data={note}
+                onClick={() => handleDetails(note.id)}
+              />
+            ))
+          }
         </Section>
       </Content>
 
