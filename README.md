@@ -15,9 +15,5 @@
   both folders "rocketnotes" for your front-end and in "API" for the back-end.
 </p>
 
-  There's a test user in the database already. 
-- Login: **a@email.com**
-- Password: **a**
-
 ## Preview
 ![gif](https://user-images.githubusercontent.com/108272161/197600558-c63eb427-8b5c-4d7c-a842-596f3a393ffe.gif)
