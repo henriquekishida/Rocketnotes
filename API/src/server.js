@@ -1,4 +1,6 @@
 require("express-async-errors")
+require("dotenv/config")
+
 const migrationRun = require("./database/sqlite/migrations")
 const appError = require("./utils/appError")
 const uploadConfig = require("./configs/upload")
@@ -17,8 +19,8 @@ app.use(routes)
 
 migrationRun()
 
-app.use((error, request, response, next) =>{
-  if(error instanceof appError){
+app.use((error, request, response, next) => {
+  if (error instanceof appError) {
     return response.status(error.statusCode).json({
       status: "error",
       message: error.message
@@ -33,6 +35,6 @@ app.use((error, request, response, next) =>{
   })
 })
 
-const PORT = 3333
+const PORT = process.env.PORT || 3333
 app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`))
 
