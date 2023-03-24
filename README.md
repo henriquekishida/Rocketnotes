@@ -18,7 +18,7 @@
 ## Preview
 ![gif](https://user-images.githubusercontent.com/108272161/197600558-c63eb427-8b5c-4d7c-a842-596f3a393ffe.gif)
 
-<h2 align="center" ><a href=" henriquekishida-rocketnotes.netlify.app ">Deploy📄 </a></h2>
+<h2 align="center" ><a href="https://henriquekishida-rocketnotes.netlify.app/">Deploy📄 </a></h2>
 
 TEST USER IS: <br>
 email: a@email.com <br>
